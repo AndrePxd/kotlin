@@ -1,6 +1,7 @@
 package arquikotlin.example.kotlin.bl;
 
 import arquikotlin.example.kotlin.dto.ApiDto
+import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.springframework.stereotype.Service
@@ -23,7 +24,9 @@ class CurrencyBl {
         val response = client.newCall(request).execute();
         val responseBody = response.body().string();
         println(responseBody)
-        return null;
 
+        val objectMapper = ObjectMapper();
+        val apiDto = objectMapper.readValue(responseBody, ApiDto::class.java);
+        return apiDto;
     }
 }
