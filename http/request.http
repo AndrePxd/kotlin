@@ -1,0 +1,1 @@
+GET http://localhost:8080/v1/change/coin?from=USD&to=EUR&amount=100
