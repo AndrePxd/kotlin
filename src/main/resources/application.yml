@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    type: org.postgresql.jdbc2.optional.SimpleDataSource
+    username: postgres
+    password: mysecretpassword
+    url: jdbc:postgresql://localhost:5431/postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+  application:
+    name: currency-converter
