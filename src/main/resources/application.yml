@@ -1,6 +1,6 @@
 currency:
-  url: https://api.apilayer.com/exchangerates_data/convert
-  api_key: HhvYSUHpiQWsUZ79MC3FTHd2TdD0R6g3
+  url: ${API_URL}
+  api_key: ${API_KEY}
 
 server:
   port: 8080
@@ -8,10 +8,11 @@ server:
 spring:
   datasource:
     type: org.postgresql.jdbc2.optional.SimpleDataSource
-    username: postgres
+    username: ${USER_NAME:postgres}
     password: ${PASSWORD:mysecretpassword}
     url: ${URL:jdbc:postgresql://localhost:5431/postgres}
-
+  config:
+    import: optional:file:.env[.properties]
   jpa:
     hibernate:
       ddl-auto: update

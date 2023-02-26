@@ -18,7 +18,7 @@ services:
       - "8080:8080"
     environment:
       URL: ${POSTGRES_URL}
-      USERNAME: ${POSTGRES_USER}
+      USER_NAME: ${POSTGRES_USER}
       PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - C:\Users\andre\Downloads\Currency2:/Users/andre/Downloads/Currency3

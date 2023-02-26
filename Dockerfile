@@ -1,8 +1,8 @@
 FROM eclipse-temurin:11-jdk
 COPY target/*.jar /app.jar
+COPY .env .env
 
-
-ENV USERNAME ${POSTGRES_USER}
+ENV USER_NAME ${POSTGRES_USER}
 ENV PASSWORD ${POSTGRES_PASSWORD}
 ENV URL ${POSTGRES_URL}
 
