@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres
+    mem_limit: 512m
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: postgres
+    volumes:
+      - C:\Users\andre\Downloads\Currency:/var/lib/postgresql/data
+  currency-converter:
+    image: currencydemo:3.0.0
+    restart: always
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+    environment:
+      URL: ${POSTGRES_URL}
+      USERNAME: ${POSTGRES_USER}
+      PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - C:\Users\andre\Downloads\Currency2:/Users/andre/Downloads/Currency3
+    depends_on:
+      - postgres

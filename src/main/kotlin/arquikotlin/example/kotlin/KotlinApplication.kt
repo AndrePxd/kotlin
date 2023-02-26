@@ -7,23 +7,11 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import ch.qos.logback.classic.LoggerContext
+import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class KotlinApplication {
-	companion object {
-		private val logger = LoggerFactory.getLogger(KotlinApplication::class.java)
-		@JvmStatic
-		fun main(args: Array<String>) {
-			SpringApplication.run(KotlinApplication::class.java, *args)
-			val loggerContext = LoggerFactory.getILoggerFactory() as LoggerContext
-			try {
-				loggerContext.reset()
-				val configurator = JoranConfigurator()
-				configurator.context = loggerContext
-				configurator.doConfigure("src/main/kotlin/logback.xml")
-			} catch (je: JoranException) {
-				StatusPrinter.print(loggerContext)
-			}
-		}
-	}
+class KotlinApplication
+
+fun main(args: Array<String>) {
+	runApplication<KotlinApplication>(*args)
 }
