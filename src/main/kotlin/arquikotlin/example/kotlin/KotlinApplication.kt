@@ -8,8 +8,10 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import ch.qos.logback.classic.LoggerContext
 import org.springframework.boot.runApplication
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 
 @SpringBootApplication
+@EnableEurekaClient
 class KotlinApplication
 
 fun main(args: Array<String>) {

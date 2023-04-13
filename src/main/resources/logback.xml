@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <springProperty scope="context" name="application" source="spring.application.name" defaultValue="micro-service"/>
+    <springProperty scope="context" name="port" source="server.port" defaultValue="0000"/>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>/Users/andre/Downloads/log-%d{yyyy-MM-dd}-%i.txt</fileNamePattern>
+            <fileNamePattern>/Users/andre/Downloads/Currency3/log-%d{yyyy-MM-dd}-%i.txt</fileNamePattern>
             <maxFileSize>1000KB</maxFileSize>
             <maxHistory>30</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
@@ -11,7 +15,8 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
         </encoder>
     </appender>
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />
     </root>
 </configuration>

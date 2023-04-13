@@ -10,6 +10,7 @@ class ApiDto(
     var result: BigDecimal?
 ) {
     constructor() : this(false, null, null, null, null)
+    constructor(query: ChangeDto, result: BigDecimal) : this()
 
     override fun toString(): String {
         return "ApiDto(success=$success, query=$query, info=$info, date=$date, result=$result)"

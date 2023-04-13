@@ -1,6 +1,6 @@
 currency:
-  url: ${API_URL}
-  api_key: ${API_KEY}
+  url: ${API_URL:https://api.apilayer.com/exchangerates_data/convert}
+  api_key: ${API_KEY:HhvYSUHpiQWsUZ79MC3FTHd2TdD0R6g3}
 
 server:
   port: 8080
@@ -18,3 +18,29 @@ spring:
       ddl-auto: update
   application:
     name: currency-converter
+keycloak:
+  auth-server-url: http://172.18.11.125:8081
+  auto-detect-bearer-only: true
+  credentials:
+    secret: DoIAbAIUzfWsrHyNU4ppEahWS1I9ONM4
+  realm: software
+  resource: backend
+  ssl-required: none
+  use-resource-role-mappings: false
+  security-constraints:
+    - auth-roles:
+        - ADMIN
+      security-collections:
+        - name: SERVICIOS DE ADMINISTRADOR
+          omitted-methods:
+            - OPTIONS
+          patterns:
+            - /v1/change/history
+    - auth-roles:
+        - USER
+      security-collections:
+        - name: SERVICIOS DE CONVERSION
+          omitted-methods:
+            - OPTIONS
+          patterns:
+            - /v1/change/coin
